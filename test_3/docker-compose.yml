@@ -1,0 +1,38 @@
+---
+version: '3.5'
+services:
+  redis:
+    image: redis
+    hostname: redis
+    networks:
+      - test_3
+    restart: always
+
+  server:
+    build:
+      context: ./server
+    restart: always
+    volumes:
+      - ./server:/usr/app
+    networks:
+      - test_3
+    depends_on:
+      - redis
+    ports:
+      - 7070:7070
+
+  worker:
+    build:
+      context: ./worker
+    restart: always
+    volumes:
+      - ./worker:/usr/app
+    networks:
+      - test_3
+    depends_on:
+      - redis
+
+networks:
+  test_3:
+    driver: bridge
+
