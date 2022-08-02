@@ -69,7 +69,7 @@ You can use [Postman](https://www.postman.com/) in order to send API requests.
 
 Example:
 ```
-GET <host>/api/tree/path-search?tree="{1:{2:{4:null,5:null},3:null}}"?pathsToFind[]=4&pathsToFind[]=5
+GET <host>/api/tree/path-search?tree="{1:{2:{4:null,5:null},3:null}}"&pathsToFind[]=4&pathsToFind[]=5
 > [“1->2->4”, “1->2->5”]
 ```
 
